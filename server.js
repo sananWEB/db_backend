@@ -3,8 +3,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongo = require("mongoose");
+
 require("dotenv").config();
 //import registration model
+const fs=require("fs");
 const registrationSchema = require("./models/registration");
 const productSchema = require("./models/product");
 // Database connection
@@ -42,8 +44,12 @@ app.use(function (req, res, next) {
 });
 
 app.get("/getproducts", async (req, res) => {
-  var a = await productSchema.find();
-  res.send(a);
+
+   //var aa = await productSchema.find();
+   var aa=fs.readFileSync("./bigdataa.json")
+   res.send(aa);
+
+  
 });
 
 app.get("/userregistration/:username", (req, res) => {
@@ -145,7 +151,7 @@ app.post("/updateuser", async (req, res) => {
       res.send("user updated");
     })
     .catch(() => {
-      res.send("there is some thing wrong");
+      res.send("there is something wrong");
     });
 });
 
