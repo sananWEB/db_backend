@@ -44,11 +44,12 @@ app.use(function (req, res, next) {
 });
 app.get("/getproducts",async (req, res) => {
 
-   var aa = await productSchema.find();
- res.send(aa)
+  //  var aa = await productSchema.find()
+  //  res.send(aa)
+ 
 
-  // var aa=fs.readFileSync("./bigdataa.json")
-  // res.send(JSON.parse(aa))
+  var aa=fs.readFileSync("./bigdataa.json")
+  res.send(JSON.parse(aa))
 
 
 
