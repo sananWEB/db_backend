@@ -43,16 +43,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/getproducts",(req, res) => {
+app.get("/getproducts", async(req, res) => {
 
   // var aa = await productSchema.find();
-   fs.readFile("./bigdataa.json",(err, data) => {
+  var aa=fs.readFileSync("./bigdataa.json")
 
-    if (err) throw err;
-     res.send(data)
-   })
-
-  
+  res.send(aa)
 
   
    
