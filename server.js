@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/getproducts", (req, res) => {
+app.get("/getproducts",async (req, res) => {
 
   // var aa = await productSchema.find();
   //var aa=fs.readFileSync("./bigdataa.json")
@@ -51,7 +51,7 @@ app.get("/getproducts", (req, res) => {
   //res.send(JSON.parse(aa))
 
 
-  axios.get("https://raw.githubusercontent.com/sananWEB/db_backend/main/bigdataa.json").then((data)=>{res.send(data.data)})
+ await axios.get("https://raw.githubusercontent.com/sananWEB/db_backend/main/bigdataa.json").then((data)=>{res.send(data.data)})
    
  
   
