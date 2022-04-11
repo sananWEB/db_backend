@@ -45,13 +45,9 @@ app.use(function (req, res, next) {
 
 app.get("/getproducts",async (req, res) => {
 
-  // var aa = await productSchema.find();
-  //var aa=fs.readFileSync("./bigdataa.json")
-
-  //res.send(JSON.parse(aa))
-
-
- await axios.get("https://raw.githubusercontent.com/sananWEB/db_backend/main/bigdataa.json").then((data)=>{res.send(data.data)})
+   var aa = await productSchema.find();
+  
+res.send(aa)
    
  
   
