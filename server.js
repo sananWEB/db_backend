@@ -43,13 +43,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/getproducts", (req, res) => {
+app.get("/getproducts",(req, res) => {
 
   // var aa = await productSchema.find();
-   fs.readFile("./bigdataa.json",(err, data) => {
+   fs.readFile("./bigdata.json",(err, data) => {
 
     if (err) throw err;
-    res.send(data)
+     res.send(data)
    })
 
   
