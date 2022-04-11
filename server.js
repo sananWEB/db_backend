@@ -48,7 +48,7 @@ app.get("/getproducts", async(req, res) => {
   // var aa = await productSchema.find();
   var aa=fs.readFileSync("./bigdataa.json")
 
-  res.send(aa)
+  res.send(JSON.parse(aa))
 
   
    
