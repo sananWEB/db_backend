@@ -50,10 +50,10 @@ app.get("/getproducts", async(req, res) => {
 
   fs.readFile("./bigdataa.json", (err, data) => {
     if (err) throw err;
-    res.send(data); 
+    res.send(JSON.parse(data)); 
   })
    
-
+ 
   
 });
 
