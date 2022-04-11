@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 app.get("/getproducts",(req, res) => {
 
   // var aa = await productSchema.find();
-   fs.readFile("./bigdata.json",(err, data) => {
+   fs.readFile("./bigdataa.json",(err, data) => {
 
     if (err) throw err;
      res.send(data)
