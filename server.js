@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongo = require("mongoose");
-
+const axios=require("axios")
 require("dotenv").config();
 //import registration model
 const fs=require("fs");
@@ -43,14 +43,15 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/getproducts", async(req, res) => {
+app.get("/getproducts", (req, res) => {
 
   // var aa = await productSchema.find();
-  var aa=fs.readFileSync("./bigdataa.json")
+  //var aa=fs.readFileSync("./bigdataa.json")
 
-  res.send(JSON.parse(aa))
+  //res.send(JSON.parse(aa))
 
-  
+
+  axios.get("https://raw.githubusercontent.com/sananWEB/db_backend/main/bigdataa.json").then((data)=>{res.send(data.data)})
    
  
   
