@@ -42,14 +42,16 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-
 app.get("/getproducts",async (req, res) => {
 
    var aa = await productSchema.find();
-  
-res.send(aa)
-   
- 
+ res.send(aa)
+
+  // var aa=fs.readFileSync("./bigdataa.json")
+  // res.send(JSON.parse(aa))
+
+
+
   
 });
 
