@@ -5,6 +5,8 @@ const cors = require("cors");
 const mongo = require("mongoose");
 const axios=require("axios")
 require("dotenv").config();
+const nodemailer = require("nodemailer");
+
 //import registration model
 const fs=require("fs");
 const registrationSchema = require("./models/registration");
@@ -52,9 +54,51 @@ app.get("/getproducts",async (req, res) => {
   res.send(JSON.parse(aa))
 
 
-
   
 });
+
+app.post("/forgetpassword",async(req,res)=>{
+  const data1 = await registrationSchema.find({ email: req.body.email });
+
+
+  if(data1.length==0){
+    res.send({msg:"This email is not exist"})
+  }
+  else{
+   // res.send({msg:"Check your email for password"})
+    let trans=nodemailer.createTransport({
+    
+      service:"gmail",
+      auth:{
+          user:process.env.ID,
+          pass:process.env.PASS
+      }
+    }) 
+
+    let mailOptions={
+      from:process.env.ID,
+       to:req.body.email,
+       subject:"FORGET PASSWORD",
+       text:`Your DATABOT password is ${data1[0].password} `
+     };
+
+     trans.sendMail(mailOptions,(err,data)=>{
+      if(err){
+          //res.send({msg:"This email is not correct"})
+          console.log(err)
+      }
+      else{
+        res.send({msg:"Check your email for password"})
+
+      }
+    });
+    
+
+  }
+
+})
+
+
 
 app.get("/userregistration/:username", (req, res) => {
   res.send({ name: req.params.username });
@@ -91,6 +135,38 @@ app.post("/userregistration", async (req, res) => {
   }
 });
 
+
+app.get("/getproductss",()=>{
+
+  var brands=["https://t.ly/PeCQ",
+  "https://t.ly/XWzF",
+  "https://t.ly/9vxf",
+"https://t.ly/zG7K",
+"https://t.ly/jary",
+"https://t.ly/pF9x",
+"https://t.ly/PQYP",
+"https://t.ly/jaHZ",
+"https://t.ly/1Gjb",
+"https://t.ly/bw7H",
+"https://t.ly/j_d_",
+"https://t.ly/RQnv",
+"https://t.ly/ueNi",
+"https://t.ly/J_Il",
+"https://t.ly/uW-P",
+"https://t.ly/z3mZ",
+"https://t.ly/ifmX",
+"https://t.ly/SKvO",
+"https://t.ly/6jWy",
+"https://t.ly/Yg_4",
+"https://t.ly/-ELF",
+"https://t.ly/WuEM",
+]
+
+brands.map(i=>{
+
+  res.send(i.readdata(i.data))
+})
+})
 //sigin
 
 // app.post("/signin", async (req, res) => {
