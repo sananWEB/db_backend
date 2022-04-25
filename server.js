@@ -71,7 +71,7 @@ app.post("/forgetpassword",async(req,res)=>{
       service:"gmail",
       host: "smtp.ethereal.email",
       port: 587,
-      secure: false, 
+      secure: true, 
       auth:{
           user:process.env.ID,
           pass:process.env.PASS
