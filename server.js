@@ -53,7 +53,7 @@ app.get("/getproducts",async (req, res) => {
   var aa=fs.readFileSync("./bigdataa.json")
   res.send(JSON.parse(aa))
 
-
+ 
   
 });
 
